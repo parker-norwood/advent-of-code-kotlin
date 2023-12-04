@@ -1,0 +1,52 @@
+//val SYMBOLS = Regex("[^\\w\\s.]")
+//
+//fun main() {
+//    val matrix = readInput("Day03")
+//        .map { line -> line.toCharArray().toList() }
+//
+//    val partNumbers = mutableListOf<Int>()
+//
+//    val window = mutableListOf<Char>()
+//    var leftBound: Int? = null
+//    var rightBound: Int? = null
+//
+//    matrix.forEachIndexed { row, chars ->
+//        chars.forEachIndexed { col, char ->
+//            if (char.isDigit()) {
+//                window += char
+//                if (leftBound == null) {
+//                    leftBound = col
+//                }
+//            } else {
+//                rightBound = col
+//
+//                if (window.isNotEmpty()) {
+//                    println("window: $window, from $leftBound to $rightBound on row $row")
+//                    if (hasAdjacentSymbol(matrix, leftBound!!, rightBound!!, row)) {
+//                        partNumbers.add(window.joinToString("").toInt())
+//                    }
+//                }
+//
+//                // clear window
+//                window.clear()
+//                leftBound = null
+//                rightBound = null
+//            }
+//        }
+//    }
+//
+//    partNumbers.sum().println()
+//}
+//
+//fun hasAdjacentSymbol(matrix: List<List<Char>>, left: Int, right: Int, row: Int): Boolean {
+//    (left..right).forEach { col ->
+//        DIRECTION.entries.forEach { d ->
+//            if (col + d.col in matrix.indices && row + d.row in matrix.indices) {
+//                if (matrix[row + d.row][col + d.col].toString().matches(SYMBOLS)) {
+//                    return true
+//                }
+//            }
+//        }
+//    }
+//    return false
+//}
